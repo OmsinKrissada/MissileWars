@@ -114,7 +114,7 @@ public class Game {
 		redLobbySpawn = new Location(world, -81, 78, -20, 270F, 0F);
 		greenSpawn = new Location(world, -26, 77, 62, 180F, 0F);
 		redSpawn = new Location(world, -26, 77, -61, 360F, 0F);
-		lobby = new Location(world, -100, 70, 0, 90F, 0F);
+		lobby = new Location(world, -100.5, 70, 0.5, 90F, 0F);
 		specSpawn = new Location(world, -27, 74, 0);
 		greenHelmet = new ItemStack(Material.LEATHER_HELMET);
 		LeatherArmorMeta greenHelmetMeta = (LeatherArmorMeta) greenHelmet.getItemMeta();
