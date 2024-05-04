@@ -1,16 +1,16 @@
 /*******************************************************************************
  * Copyright (C) 2019 Linux4
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published
  * by the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Affero General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
@@ -212,68 +212,60 @@ public class Game {
 	}
 
 	public void greenAddPlayer(Player player) {
-		if (greenTeam.size() < (MissileWars.getMWConfig().getMaxPlayers() / 2)) {
-			if (nextTeam() == PlayerTeam.NONE || nextTeam() == PlayerTeam.GREEN) {
-				PlayerInventory inv = player.getInventory();
-				inv.addItem(bow);
-				inv.setHelmet(greenHelmet);
-				inv.setChestplate(greenChestplate);
-				inv.setLeggings(greenLeggings);
-				inv.setBoots(greenBoots);
-				spec.removeEntry(player.getName());
-				none.removeEntry(player.getName());
-				green.addEntry(player.getName());
-				greenTeam.add(player);
-				player.setDisplayName("§a" + player.getName());
-				player.setPlayerListName("§a" + player.getName());
-				if (!gameStarted) {
-					player.setGameMode(GameMode.ADVENTURE);
-					player.teleport(greenLobbySpawn);
-				} else {
-					greenTeleport(player);
-				}
-				for (Player tmpPlayer : Bukkit.getOnlinePlayers()) {
-					tmpPlayer.sendMessage(
-							prefix + this.getPlayerPrefix(player) + player.getName() + "§a joined the green team!");
-				}
+		if (nextTeam() == PlayerTeam.NONE || nextTeam() == PlayerTeam.GREEN) {
+			PlayerInventory inv = player.getInventory();
+			inv.addItem(bow);
+			inv.setHelmet(greenHelmet);
+			inv.setChestplate(greenChestplate);
+			inv.setLeggings(greenLeggings);
+			inv.setBoots(greenBoots);
+			spec.removeEntry(player.getName());
+			none.removeEntry(player.getName());
+			green.addEntry(player.getName());
+			greenTeam.add(player);
+			player.setDisplayName("§a" + player.getName());
+			player.setPlayerListName("§a" + player.getName());
+			if (!gameStarted) {
+				player.setGameMode(GameMode.ADVENTURE);
+				player.teleport(greenLobbySpawn);
 			} else {
-				player.sendMessage(prefix + "§cPlease join another team!");
+				greenTeleport(player);
+			}
+			for (Player tmpPlayer : Bukkit.getOnlinePlayers()) {
+				tmpPlayer.sendMessage(
+						prefix + this.getPlayerPrefix(player) + player.getName() + "§a joined the green team!");
 			}
 		} else {
-			player.sendMessage(prefix + "§cThis team is already full!");
+			player.sendMessage(prefix + "§cPlease join another team!");
 		}
 	}
 
 	public void redAddPlayer(Player player) {
-		if (redTeam.size() < (MissileWars.getMWConfig().getMaxPlayers() / 2)) {
-			if (nextTeam() == PlayerTeam.NONE || nextTeam() == PlayerTeam.RED) {
-				PlayerInventory inv = player.getInventory();
-				inv.addItem(bow);
-				inv.setHelmet(redHelmet);
-				inv.setChestplate(redChestplate);
-				inv.setLeggings(redLeggings);
-				inv.setBoots(redBoots);
-				spec.removeEntry(player.getName());
-				none.removeEntry(player.getName());
-				red.addEntry(player.getName());
-				redTeam.add(player);
-				player.setDisplayName("§c" + player.getName());
-				player.setPlayerListName("§c" + player.getName());
-				if (!gameStarted) {
-					player.setGameMode(GameMode.ADVENTURE);
-					player.teleport(redLobbySpawn);
-				} else {
-					redTeleport(player);
-				}
-				for (Player tmpPlayer : Bukkit.getOnlinePlayers()) {
-					tmpPlayer.sendMessage(
-							prefix + getPlayerPrefix(player) + player.getName() + "§c joined the red team!");
-				}
+		if (nextTeam() == PlayerTeam.NONE || nextTeam() == PlayerTeam.RED) {
+			PlayerInventory inv = player.getInventory();
+			inv.addItem(bow);
+			inv.setHelmet(redHelmet);
+			inv.setChestplate(redChestplate);
+			inv.setLeggings(redLeggings);
+			inv.setBoots(redBoots);
+			spec.removeEntry(player.getName());
+			none.removeEntry(player.getName());
+			red.addEntry(player.getName());
+			redTeam.add(player);
+			player.setDisplayName("§c" + player.getName());
+			player.setPlayerListName("§c" + player.getName());
+			if (!gameStarted) {
+				player.setGameMode(GameMode.ADVENTURE);
+				player.teleport(redLobbySpawn);
 			} else {
-				player.sendMessage(prefix + "§cPlease join another team!");
+				redTeleport(player);
+			}
+			for (Player tmpPlayer : Bukkit.getOnlinePlayers()) {
+				tmpPlayer.sendMessage(
+						prefix + getPlayerPrefix(player) + player.getName() + "§c joined the red team!");
 			}
 		} else {
-			player.sendMessage(prefix + "§cThis team is already full!");
+			player.sendMessage(prefix + "§cPlease join another team!");
 		}
 	}
 
@@ -401,15 +393,15 @@ public class Game {
 
 	public String getPlayerPrefix(Player p) {
 		switch (getPlayerTeam(p)) {
-		case GREEN:
-			return "§a";
-		case RED:
-			return "§c";
-		case SPEC:
-			return "§8";
-		case NONE:
-		default:
-			return "§7";
+			case GREEN:
+				return "§a";
+			case RED:
+				return "§c";
+			case SPEC:
+				return "§8";
+			case NONE:
+			default:
+				return "§7";
 		}
 	}
 
