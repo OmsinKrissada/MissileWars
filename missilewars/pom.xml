@@ -21,7 +21,7 @@
 	<parent>
 		<groupId>de.linux4.missilewars</groupId>
 		<artifactId>missilewars-parent</artifactId>
-		<version>1.0.1</version>
+		<version>1.0.2</version>
 	</parent>
 	<artifactId>missilewars</artifactId>
 	<name>MissileWars</name>
