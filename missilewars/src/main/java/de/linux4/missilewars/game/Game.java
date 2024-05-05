@@ -212,60 +212,52 @@ public class Game {
 	}
 
 	public void greenAddPlayer(Player player) {
-		if (nextTeam() == PlayerTeam.NONE || nextTeam() == PlayerTeam.GREEN) {
-			PlayerInventory inv = player.getInventory();
-			inv.addItem(bow);
-			inv.setHelmet(greenHelmet);
-			inv.setChestplate(greenChestplate);
-			inv.setLeggings(greenLeggings);
-			inv.setBoots(greenBoots);
-			spec.removeEntry(player.getName());
-			none.removeEntry(player.getName());
-			green.addEntry(player.getName());
-			greenTeam.add(player);
-			player.setDisplayName("§a" + player.getName());
-			player.setPlayerListName("§a" + player.getName());
-			if (!gameStarted) {
-				player.setGameMode(GameMode.ADVENTURE);
-				player.teleport(greenLobbySpawn);
-			} else {
-				greenTeleport(player);
-			}
-			for (Player tmpPlayer : Bukkit.getOnlinePlayers()) {
-				tmpPlayer.sendMessage(
-						prefix + this.getPlayerPrefix(player) + player.getName() + "§a joined the green team!");
-			}
+		PlayerInventory inv = player.getInventory();
+		inv.addItem(bow);
+		inv.setHelmet(greenHelmet);
+		inv.setChestplate(greenChestplate);
+		inv.setLeggings(greenLeggings);
+		inv.setBoots(greenBoots);
+		spec.removeEntry(player.getName());
+		none.removeEntry(player.getName());
+		green.addEntry(player.getName());
+		greenTeam.add(player);
+		player.setDisplayName("§a" + player.getName());
+		player.setPlayerListName("§a" + player.getName());
+		if (!gameStarted) {
+			player.setGameMode(GameMode.ADVENTURE);
+			player.teleport(greenLobbySpawn);
 		} else {
-			player.sendMessage(prefix + "§cPlease join another team!");
+			greenTeleport(player);
+		}
+		for (Player tmpPlayer : Bukkit.getOnlinePlayers()) {
+			tmpPlayer.sendMessage(
+					prefix + this.getPlayerPrefix(player) + player.getName() + "§a joined the green team!");
 		}
 	}
 
 	public void redAddPlayer(Player player) {
-		if (nextTeam() == PlayerTeam.NONE || nextTeam() == PlayerTeam.RED) {
-			PlayerInventory inv = player.getInventory();
-			inv.addItem(bow);
-			inv.setHelmet(redHelmet);
-			inv.setChestplate(redChestplate);
-			inv.setLeggings(redLeggings);
-			inv.setBoots(redBoots);
-			spec.removeEntry(player.getName());
-			none.removeEntry(player.getName());
-			red.addEntry(player.getName());
-			redTeam.add(player);
-			player.setDisplayName("§c" + player.getName());
-			player.setPlayerListName("§c" + player.getName());
-			if (!gameStarted) {
-				player.setGameMode(GameMode.ADVENTURE);
-				player.teleport(redLobbySpawn);
-			} else {
-				redTeleport(player);
-			}
-			for (Player tmpPlayer : Bukkit.getOnlinePlayers()) {
-				tmpPlayer.sendMessage(
-						prefix + getPlayerPrefix(player) + player.getName() + "§c joined the red team!");
-			}
+		PlayerInventory inv = player.getInventory();
+		inv.addItem(bow);
+		inv.setHelmet(redHelmet);
+		inv.setChestplate(redChestplate);
+		inv.setLeggings(redLeggings);
+		inv.setBoots(redBoots);
+		spec.removeEntry(player.getName());
+		none.removeEntry(player.getName());
+		red.addEntry(player.getName());
+		redTeam.add(player);
+		player.setDisplayName("§c" + player.getName());
+		player.setPlayerListName("§c" + player.getName());
+		if (!gameStarted) {
+			player.setGameMode(GameMode.ADVENTURE);
+			player.teleport(redLobbySpawn);
 		} else {
-			player.sendMessage(prefix + "§cPlease join another team!");
+			redTeleport(player);
+		}
+		for (Player tmpPlayer : Bukkit.getOnlinePlayers()) {
+			tmpPlayer.sendMessage(
+					prefix + getPlayerPrefix(player) + player.getName() + "§c joined the red team!");
 		}
 	}
 
@@ -313,18 +305,6 @@ public class Game {
 		player.getInventory().setArmorContents(new ItemStack[4]);
 		player.setAllowFlight(false);
 		player.setFlying(false);
-	}
-
-	public PlayerTeam nextTeam() {
-		if (red.getSize() == green.getSize()) {
-			return PlayerTeam.NONE;
-		} else if (red.getSize() > green.getSize()) {
-			return PlayerTeam.GREEN;
-		} else if (green.getSize() > red.getSize()) {
-			return PlayerTeam.RED;
-		} else {
-			return PlayerTeam.NONE;
-		}
 	}
 
 	public void setGameStarted(boolean gameStarted) {
