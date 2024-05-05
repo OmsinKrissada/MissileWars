@@ -112,8 +112,8 @@ public class Game {
 		redJoin.add(new Location(world, -117, 66, -8));
 		greenLobbySpawn = new Location(world, -81, 78, 21, 270F, 0F);
 		redLobbySpawn = new Location(world, -81, 78, -20, 270F, 0F);
-		greenSpawn = new Location(world, -26, 77, 62, 180F, 0F);
-		redSpawn = new Location(world, -26, 77, -61, 360F, 0F);
+		greenSpawn = new Location(world, -26.5, 77, 62.5, 180F, 0F);
+		redSpawn = new Location(world, -26.5, 77, -61.5, 360F, 0F);
 		lobby = new Location(world, -100.5, 70, 0.5, 90F, 0F);
 		specSpawn = new Location(world, -27, 74, 0);
 		greenHelmet = new ItemStack(Material.LEATHER_HELMET);
